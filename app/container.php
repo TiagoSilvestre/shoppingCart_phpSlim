@@ -10,6 +10,10 @@ use Cart\Support\Storage\SessionStorage;
 use Cart\Basket\Basket;
 use Cart\Validation\Contracts\ValidatorInterface;
 use Cart\Validation\Validator;
+use Cart\Models\Order;
+use Cart\Models\Customer;
+use Cart\Models\Address;
+use Cart\Models\Payment;
 
 
 return [
@@ -37,6 +41,18 @@ return [
     Product::class => function(ContainerInterface $c) {
         return new Product;
     },
+    Order::class => function (ContainerInterface $c) {
+        return new Order;
+    },
+    Customer::class => function (ContainerInterface $c) {
+        return new Customer;
+    },
+    Address::class => function (ContainerInterface $c) {
+        return new Address;
+    },     
+    Payment::class => function (ContainerInterface $c) {
+        return new Payment;
+    },                 
     Basket::class => function (ContainerInterface $c) {
         return new Basket(
             $c->get(SessionStorage::class),

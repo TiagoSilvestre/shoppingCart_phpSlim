@@ -15,7 +15,7 @@ class OrderForm
             'address1' => v::alnum(' -'),
             'address2' => v::optional(v::alnum(' -')),
             'city' => v::alnum(' '),
-            'postal_code' => v::alnum('v::')
+            'postal_code' => v::alnum(' ')
         ];
     }
 }

@@ -1,7 +1,8 @@
 <?php
-// braintreepayments - usuario: tardesin - senha: a1b2c3d4
+
 use Cart\App;
 use Slim\Views\Twig;
+
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 session_start();
@@ -26,6 +27,13 @@ $capsule->addConnection([
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
+
+Braintree_Configuration::environment('sandbox');
+Braintree_Configuration::merchantId('n9hdn2vf765wcd43');
+Braintree_Configuration::publickey('nt9dm6nmc7qqsj6w');
+Braintree_Configuration::privateKey('dc1934a52dd8757ea191e9c649e0c90e');
+        
+        
 require __DIR__ . '/../app/routes.php';
 
 
