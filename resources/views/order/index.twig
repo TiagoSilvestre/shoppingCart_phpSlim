@@ -1,0 +1,82 @@
+{% extends 'templates/app.twig' %}
+
+{% block content %}
+    <form action="{{ path_for('order.create')}}" method="post">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="col-md-6">
+                    <h3>Your Details</h3>
+                    <hr>
+
+                    <div class="form-group {{ errors.email ? 'has-error' : ''}}">
+                        <label for="email" class="{{ errors.email ? 'text-danger' : ''}}">Email</label>
+                        <input type="email" name="email" id="email" class="form-control" value="{{ old.email }}"> 
+                        {% if errors.email %}
+                            <span class="help-block text-danger">{{ errors.email | first }}</span>
+                        {% endif %}                            
+                    </div>                        
+
+
+
+                    <div class="form-group {{ errors.name ? 'has-error' : ''}}">
+                        <label for="name" class="{{ errors.name ? 'text-danger' : ''}}">Full name</label>
+                        <input type="text" name="name" id="name" class="form-control" value="{{ old.name }}">
+                        {% if errors.name %}
+                            <span class="help-block text-danger">{{ errors.name | first }}</span>
+                        {% endif %}                                
+                    </div>                       
+
+                </div>
+
+                <div class="col-md-6">
+                    <h3>Shipping address</h3>
+                    <hr>
+
+                    <div class="form-group {{ errors.address1 ? 'has-error' : ''}}">
+                        <label for="address1" class="{{ errors.address1 ? 'text-danger' : ''}}">Address line 1</label>
+                        <input type="text" name="address1" id="address1" class="form-control" value="{{ old.address1 }}">
+                        {% if errors.address1 %}
+                            <span class="help-block text-danger">{{ errors.address1 | first }}</span>
+                        {% endif %}     
+                    </div>                    
+
+                    <div class="form-group {{ errors.address2 ? 'has-error' : ''}}">
+                        <label for="address2" class="{{ errors.address2 ? 'text-danger' : ''}}">Address line 2</label>
+                        <input type="text" name="address2" id="address2" class="form-control" value="{{ old.address2 }}">
+                        {% if errors.address2 %}
+                            <span class="help-block text-danger">{{ errors.address2 | first }}</span>
+                        {% endif %}     
+                    </div>                                        
+
+                    <div class="form-group {{ errors.city ? 'has-error' : ''}}">
+                        <label for="city" class="{{ errors.city ? 'text-danger' : ''}}">City</label>
+                        <input type="text" name="city" id="city" class="form-control" value="{{ old.city }}">
+                        {% if errors.city %}
+                            <span class="help-block text-danger">{{ errors.city | first }}</span>
+                        {% endif %}     
+                    </div>                                                            
+
+                    <div class="form-group {{ errors.postal_code ? 'has-error' : ''}}">
+                        <label for="postal_code" class="{{ errors.postal_code ? 'text-danger' : ''}}">Postal Code</label>
+                        <input type="text" name="postal_code" id="postal_code" class="form-control" value="{{ old.postal_code }}">
+                        {% if errors.postal_code %}
+                            <span class="help-block text-danger">{{ errors.postal_code | first }}</span>
+                        {% endif %}     
+                    </div>                                                         
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="well">
+                    <h4>Your Order</h4>
+                    <hr>
+                    {% include 'cart/partials/contents.twig'%}
+                    {% include 'cart/partials/summary.twig'%}
+
+                    <button type="submit" class="btn btn-default">Place order</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+{% endblock%}
